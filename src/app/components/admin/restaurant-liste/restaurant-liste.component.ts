@@ -17,7 +17,7 @@ export class RestaurantListeComponent {
   }
 
   getRestaurants() {
-    this.service.getRestaurants().subscribe(_ => console.log("Restaurants chargés"));    
+    this.service.getRestaurants().subscribe(response => this.restaurants = response);    
   }
 
 }
