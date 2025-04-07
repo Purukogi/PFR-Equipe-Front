@@ -1,1 +1,9 @@
+<div class = "bg-success rounded p-2 m-1">
+    <div class="bg-light rounded">{{ reservation?.numero_table }}</div>
+    <div>
+        <p>{{ reservation?.nom_client }} - {{ reservation?.nb_personne }} personnes</p>
+        <p>{{ reservation?.date | date : 'dd/MM/yyyy à HH:mm' }}</p>
+    </div>
+</div>
+
 <p>reservation-item works!</p>
