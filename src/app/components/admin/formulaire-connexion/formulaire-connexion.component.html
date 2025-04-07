@@ -1,13 +1,15 @@
-<div class="card">
+<div class="container vh-100 d-flex flex-column justify-content-center">
+  <div class="card">
     <form class="p-3">
-        <div class="mb-3">
-          <label for="login" class="form-label" >Login</label>
-          <input type="text" class="form-control" name="login" id="login" [(ngModel)]="login">
-        </div>
-        <div class="mb-3">
-          <label for="mdp" class="form-label" >Mot de Passe</label>
-          <input type="password" class="form-control" name="mdp" id="mdp" [(ngModel)]="mdp">
-        </div>
-        <button type="submit" class="btn btn-success w-100" (click)="connexion()">Submit</button>  
+      <div class="mb-3">
+        <label for="login" class="form-label" >Login</label>
+        <input type="text" class="form-control" name="login" id="login" [(ngModel)]="login">
+      </div>
+      <div class="mb-3">
+        <label for="mdp" class="form-label" >Mot de Passe</label>
+        <input type="password" class="form-control" name="mdp" id="mdp" [(ngModel)]="mdp">
+      </div>
+      <button type="submit" class="btn btn-success vert w-100" (click)="connexion()">Submit</button>  
     </form>
+  </div>
 </div>
