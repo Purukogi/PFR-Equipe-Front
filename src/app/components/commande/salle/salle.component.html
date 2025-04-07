@@ -1,6 +1,11 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
   <div class="row g-2 justify-content-center">
-    <div class="col-3 col-md-2 d-flex justify-content-center" *ngFor="let table of tables"> 
+    <div 
+      class="col-3 col-md-2 d-flex justify-content-center" 
+      *ngFor="let table of tables"
+      (click)="table.estOccupee && add_commande(table.id, table.numeroTable)"
+      style="cursor: pointer;"
+    > 
       <app-table-item
       [numero]="table.numeroTable"
       [estOccupee]="table.estOccupee">

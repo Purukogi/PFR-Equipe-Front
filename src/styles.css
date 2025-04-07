@@ -3,3 +3,22 @@
 .vert {
     background-color: #009970;
 }
+
+.text-vert {
+    color: #009970;
+}
+
+.btn-vert {
+    background-color: #009970;
+    color: white;
+}
+  
+.btn-vert:hover{ 
+    background-color: #017b5a; 
+    color: white;
+}
+  
+.btn-vert:active:focus{
+    background-color: #02674c;
+    color: white;    
+}
