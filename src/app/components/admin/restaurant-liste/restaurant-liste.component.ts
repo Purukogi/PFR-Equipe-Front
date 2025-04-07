@@ -12,7 +12,9 @@ import { CommonModule } from '@angular/common';
 export class RestaurantListeComponent {
   restaurants : Restaurant[] = [];
 
-  constructor (private service : RestaurantService) {}
+  constructor (private service : RestaurantService) {
+    this.getRestaurants();
+  }
 
   getRestaurants() {
     this.service.getRestaurants().subscribe(_ => console.log("Restaurants chargés"));    

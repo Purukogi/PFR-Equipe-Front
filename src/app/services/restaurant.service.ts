@@ -10,6 +10,7 @@ export class RestaurantService {
   constructor(private http : HttpClient) { }
 
   getRestaurants() {
+    console.log("getRestaurants entered");    
     return this.http.get<Restaurant[]>("http://localhost:8080/admin");
   }
   
