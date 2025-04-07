@@ -1,1 +1,13 @@
-<p>formulaire-connexion works!</p>
+<div class="card">
+    <form>
+        <div class="mb-3">
+          <label for="login" class="form-label" >Login</label>
+          <input type="text" class="form-control" name="login" id="login" [(ngModel)]="login">
+        </div>
+        <div class="mb-3">
+          <label for="mdp" class="form-label" >Mot de Passe</label>
+          <input type="password" class="form-control" name="mdp" id="mdp" [(ngModel)]="mdp">
+        </div>
+        <button type="submit" class="btn btn-success" (click)="connexion()">Submit</button>
+    </form>
+</div>
