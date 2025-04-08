@@ -5,6 +5,7 @@ import { NavigationAdminComponent } from './components/global/navigation-admin/n
 import { RestaurantListeComponent } from './components/admin/restaurant-liste/restaurant-liste.component';
 import { SalleComponent } from './components/commande/salle/salle.component';
 import { FormulaireCreationComponent } from './components/commande/formulaire-creation/formulaire-creation.component';
+import { DetailCommandeSalleComponent } from './components/commande/detail-commande-salle/detail-commande-salle.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
@@ -13,5 +14,6 @@ export const routes: Routes = [
     {path : "restaurant-liste", component : RestaurantListeComponent},
     {path : "salle", component : SalleComponent},
     {path : "creation-commande/:idCommande/:numeroTable", component : FormulaireCreationComponent},
+    {path : "detail-commande-salle/:idCommande/:numeroTable", component : DetailCommandeSalleComponent},
     {path : "**", redirectTo : "/login"}
 ];

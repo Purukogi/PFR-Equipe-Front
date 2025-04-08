@@ -41,7 +41,7 @@ export class FormulaireCreationComponent {
   }
 
   chargerPlats(idRestaurant: number) {
-    this.commandeService.getPlatsParCategorie(idRestaurant).subscribe({
+    this.commandeService.get_plats_par_categorie(idRestaurant).subscribe({
       next: (data) => {
         this.platsParCategorie = data;
         for (const plats of Object.values(data)) {
@@ -77,7 +77,7 @@ export class FormulaireCreationComponent {
       assoCommandesPlatsDto
     };
 
-    this.commandeService.ajouterPlatsCommande(this.idCommande, commande).subscribe({
+    this.commandeService.ajouter_plats_commande(this.idCommande, commande).subscribe({
       next: (res) => {
         this.messageConfirmation = "La commande a été envoyée en cuisine !";
         setTimeout(() => {

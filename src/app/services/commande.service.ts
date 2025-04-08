@@ -15,14 +15,18 @@ export class CommandeService {
     return this.client.post<Commande>(`${this.BASE_URL}/creation?table=${idTable}`, {});
   }
 
-  getPlatsParCategorie(idRestaurant: number) {
+  get_plats_par_categorie(idRestaurant: number) {
     return this.client.get<{ [categorie: string]: Plat[] }>(
       `http://localhost:8080/plats/${idRestaurant}`
     );
   }
 
-  ajouterPlatsCommande(idCommande: number, commande: Commande) {
+  ajouter_plats_commande(idCommande: number, commande: Commande) {
     return this.client.put<Commande>(`${this.BASE_URL}/${idCommande}`, commande);
+  }
+
+  get_commande_by_table(idTable: number) {
+    return this.client.get<Commande>(`${this.BASE_URL}/par-table/${idTable}`);
   }
   
 

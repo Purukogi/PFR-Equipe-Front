@@ -3,8 +3,9 @@
     <div 
       class="col-3 col-md-2 d-flex justify-content-center" 
       *ngFor="let table of tables"
-      (click)="table.estOccupee && add_commande(table.id, table.numeroTable)"
-      style="cursor: pointer;"
+      [class.pointer-disabled]="!table.estOccupee"
+      [style.cursor]="table.estOccupee ? 'pointer' : 'not-allowed'"
+      (click)="table.estOccupee && check_or_add_commande(table.id, table.numeroTable)"
     > 
       <app-table-item
       [numero]="table.numeroTable"
