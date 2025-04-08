@@ -1,0 +1,8 @@
+.reservations {
+    height: 85vh;
+    overflow-y: auto;
+}
+
+i {
+    font-size: 3rem;
+}
