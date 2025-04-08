@@ -1,12 +1,16 @@
 import { Routes } from '@angular/router';
 import { FormulaireConnexionComponent } from './components/admin/formulaire-connexion/formulaire-connexion.component';
 import { NavigationEmployeComponent } from './components/global/navigation-employe/navigation-employe.component';
+import { NavigationAdminComponent } from './components/global/navigation-admin/navigation-admin.component';
+import { RestaurantListeComponent } from './components/admin/restaurant-liste/restaurant-liste.component';
 import { SalleComponent } from './components/commande/salle/salle.component';
 import { FormulaireCreationComponent } from './components/commande/formulaire-creation/formulaire-creation.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
     {path : "navigation-employe", component : NavigationEmployeComponent},
+    {path : "navigation-admin", component : NavigationAdminComponent},
+    {path : "restaurant-liste", component : RestaurantListeComponent},
     {path : "salle", component : SalleComponent},
     {path : "creation-commande/:idCommande/:numeroTable", component : FormulaireCreationComponent},
     {path : "**", redirectTo : "/login"}
