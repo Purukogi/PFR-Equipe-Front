@@ -1,1 +1,33 @@
-<p>detail-commande-salle works!</p>
+<div class="container min-vh-100 bg-white">
+    <div class="form-container bg-light p-4 rounded shadow mx-auto" style="max-width: 600px;">
+      <h3 class="mb-4">Détails de la commande #{{ idCommande }}</h3>
+  
+      <div *ngIf="commande">
+        <div class="mb-3">
+          <p><strong>Statut de la commande :</strong> {{ commande.statut }}</p>
+          <p><strong>Réservation ID :</strong> {{ commande.idReservation }}</p>
+        </div>
+  
+        <div *ngIf="commande.assoCommandesPlatsDto.length > 0">
+          <h4 class="text-vert">Articles Commandés :</h4>
+          <div *ngFor="let item of commande.assoCommandesPlatsDto" class="mb-3">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <strong>{{ item.plat.nom }}</strong>
+                <div><small class="text-muted">{{ item.plat.prix | number: '1.2-2' }} €</small></div>
+              </div>
+              <div class="col-4 mt-2 mt-sm-0 text-sm-end">
+                <div class="btn-group" role="group">
+                  <span class="btn btn-light btn-sm disabled">{{ item.quantite }} x</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div *ngIf="commande.statut === 'Prête'" class="mt-4">
+          <button class="btn btn-vert w-100" (click)="changerStatut()">Passer le statut en "Servie"</button>
+        </div>
+      </div>
+    </div>
+  </div>

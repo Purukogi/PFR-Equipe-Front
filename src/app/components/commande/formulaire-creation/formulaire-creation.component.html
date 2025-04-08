@@ -1,1 +1,39 @@
-<p>formulaire-creation works!</p>
+<div class="container min-vh-100 bg-white">
+    <div class="form-container bg-light p-4 rounded shadow mx-auto" style="max-width: 400px;">
+        <h2 class="mb-4">Commande : Table n°{{ numeroTable }}</h2>
+    
+        <div *ngIf="idCommande" class="mb-3">
+        <p><strong>ID commande :</strong> {{ idCommande }}</p>
+        </div>
+        <form (ngSubmit)="validerCommande()">
+            <div *ngFor="let categorie of platsParCategorie | keyvalue" class="mb-4">
+              <h4 class="text-vert">{{ categorie.key }}</h4>
+
+                <div *ngFor="let plat of categorie.value" class="mb-3">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <strong>{{ plat.nom }}</strong>
+                            <div><small class="text-muted">{{ plat.prix | number: '1.2-2' }} €</small></div>
+                        </div>
+                        <div class="col-4 mt-2 mt-sm-0 text-sm-end">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-danger btn-sm" (click)="changerQuantite(plat.nom, -1)">-</button>
+                                <span class="btn btn-light btn-sm disabled">{{ quantites[plat.nom] || 0 }}</span>
+                                <button type="button" class="btn btn-outline-success btn-sm" (click)="changerQuantite(plat.nom, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-end mt-4 mb-3">
+                <h5>Total : <span class="text-vert">{{ calculerTotal() | number:'1.2-2' }} €</span></h5>
+              </div>
+      
+            <button type="submit" class="btn btn-vert w-100">Valider la commande</button>
+          </form>
+          <div *ngIf="messageConfirmation" class="alert alert-success text-center mt-4">
+            {{ messageConfirmation }}
+          </div>
+    </div>
+</div>

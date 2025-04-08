@@ -1,0 +1,36 @@
+
+.table {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.libre {
+  background-color: #009970;
+}
+
+.libre:hover{ 
+    background-color: #017b5a; 
+}
+
+.libre:active{
+    background-color: #02674c;
+    color: white;    
+}
+
+.occupee {
+  background-color: rgb(234, 103, 103);
+}
+
+.occupee:hover{ 
+    background-color: rgb(195, 88, 88); 
+}
+
+.occupee:active{
+    background-color: rgb(159, 71, 71);
+    color: white;    
+}
+
