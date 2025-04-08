@@ -19,3 +19,8 @@
     font-size: 1.2em;
     color: white;
 }
+
+.supprimer_employe:hover{
+    background-color: rgb(236, 35, 20);
+    border-radius: 5px;
+}

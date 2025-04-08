@@ -9,6 +9,7 @@ import { FormulaireCreationEmployeComponent } from './components/admin/formulair
 import { SalleComponent } from './components/commande/salle/salle.component';
 import { FormulaireCreationComponent } from './components/commande/formulaire-creation/formulaire-creation.component';
 import { DetailCommandeSalleComponent } from './components/commande/detail-commande-salle/detail-commande-salle.component';
+import { FormulaireModificationEmployeComponent } from './components/admin/formulaire-modification-employe/formulaire-modification-employe.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
@@ -18,6 +19,7 @@ export const routes: Routes = [
     {path : "restaurant-liste", component : RestaurantListeComponent},
     {path : "employe-liste/:id", component : EmployeListeComponent},
     {path : "creation-employe/:id", component : FormulaireCreationEmployeComponent},
+    {path : "modification-employe", component : FormulaireModificationEmployeComponent},
     {path : "salle", component : SalleComponent},
     {path : "creation-commande/:idCommande/:numeroTable", component : FormulaireCreationComponent},
     {path : "detail-commande-salle/:idCommande/:numeroTable", component : DetailCommandeSalleComponent},
