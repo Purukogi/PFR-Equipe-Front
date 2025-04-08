@@ -1,1 +1,8 @@
-<p>restaurant-item works!</p>
+<div class="card vert p-1 d-flex flex-row align-items-center" (click)="afficherEmployes()">
+    <div class="carre_restau">
+        {{restaurant?.id}}
+    </div>
+    <div class="description_restau m-1">
+        {{restaurant?.nom}} - {{restaurant?.adresse}}     
+    </div> 
+</div>

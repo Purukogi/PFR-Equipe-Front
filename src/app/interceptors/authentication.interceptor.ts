@@ -2,7 +2,6 @@ import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
   const jwt = localStorage.getItem("jwt");
-        console.log(req.url);
         
         if (jwt) {
             if(req.url != "http://localhost:8080/login"){
@@ -14,7 +13,6 @@ export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
             }               
         }
 
-        return next.call("handle", req);
-        
+        return next.call("handle", req);       
         
 };

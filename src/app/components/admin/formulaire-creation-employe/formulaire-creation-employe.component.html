@@ -1,1 +1,30 @@
-<p>formulaire-creation-employe works!</p>
+<div class="container vh-100 d-flex flex-column justify-content-center">
+    <div class="card">
+        <h2 class="text-center mt-3">Ajouter un employé</h2>
+        <form class="p-3">
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="prenom" class="form-label">Prenom</label>
+                    <input type="text" class="form-control" name="prenom" id="prenom" [(ngModel)]="prenom">
+                  </div>
+                  <div class="mb-3 col-6">
+                    <label for="nom" class="form-label">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="nom">
+                </div>
+            </div>
+            <div>
+                <label for="login" class="form-label">Login</label>
+                <input type="text" class="form-control" name="login" id="login" [(ngModel)]="login">
+            </div>
+            <div>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="email" [(ngModel)]="email">
+            </div>
+            <div>
+                <label for="telephone" class="form-label">Téléphone</label>
+                <input type="tel" class="form-control" name="telephone" id="telephone" [(ngModel)]="telephone">
+            </div>
+            <button type="submit" class="btn btn-success vert w-100 mt-3" (click)="ajouterEmploye()">Ajouter</button>  
+        </form>
+    </div>
+</div>
