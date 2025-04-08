@@ -10,7 +10,7 @@ export class ReservationService {
 
   constructor(private client: HttpClient) { }
 
-  get_reservations(id_restaurant: number) {
+  get_reservations(id_restaurant: string) {
     return this.client.get<Reservation[]>(this.BASE_URL + id_restaurant);
   }
 }

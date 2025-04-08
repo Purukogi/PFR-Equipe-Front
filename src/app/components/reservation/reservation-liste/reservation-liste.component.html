@@ -1,4 +1,12 @@
-<div class="vh-100 d-flex flex-column justify-content-center">
-    <div *ngIf="reservations.length === 0">Aucune réservation trouvée</div>
-    <app-reservation-item *ngFor="let reservation of reservations" [reservation]="reservation"></app-reservation-item>
+<div class="reservations d-flex flex-column justify-content-center">
+    <h5 class="ms-1 mb-3">Réservations du jour</h5>
+    <div *ngIf="reservationsDuJour.length === 0" class="ms-4">Aucune réservation pour aujourd'hui</div>
+    <app-reservation-item *ngFor="let reservation of reservationsDuJour" [reservation]="reservation"></app-reservation-item>
+  
+    <h5 class="ms-1 mt-5 mb-3">Réservations futures</h5>
+    <div *ngIf="reservationsFutures.length === 0" class="ms-4">Aucune réservation future</div>
+    <app-reservation-item *ngFor="let reservation of reservationsFutures" [reservation]="reservation"></app-reservation-item>
+  </div>
+<div class="d-flex justify-content-end ">
+    <i class="bi bi-plus-circle me-3"></i>
 </div>

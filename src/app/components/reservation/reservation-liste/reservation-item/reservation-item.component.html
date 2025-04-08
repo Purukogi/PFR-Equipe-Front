@@ -1,7 +1,7 @@
-<div class = "resa bg-success rounded p-2 m-1 d-flex">
-    <div class="carre bg-light rounded d-flex align-items-center justify-content-center p-5">{{ reservation?.numeroTable || '' }}</div>
+<div class = "vert rounded p-2 m-1 d-flex">
+    <div class="carre bg-light rounded d-flex align-items-center justify-content-center">{{ reservation?.numeroTable || '' }}</div>
     <div class="d-flex flex-column ps-4 justify-content-center text-light">
-        <p>{{ reservation?.nomClient }} - {{ reservation?.nbPersonne }} personnes</p>
-        <p>{{ reservation?.horaireReservation | date : 'dd/MM/yyyy à HH:mm' }}</p>
+        <p class="mb-1">{{ reservation?.nomClient }} - {{ reservation?.nbPersonne }} personnes</p>
+        <p class="mb-0">{{ reservation?.horaireReservation | date : 'dd/MM/yyyy à HH:mm' }}</p>
     </div>
 </div>
