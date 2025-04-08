@@ -20,7 +20,12 @@ export class FormulaireConnexionComponent {
     this.service.connexion(this.login, this.mdp)
       .subscribe(response => {        
         this.service.store_user(response);
-        this.router.navigate(['/navigation-employe']);
+        if(localStorage.getItem("id_restaurant") == "0"){
+          this.router.navigate(['/navigation-admin']);
+        } else {
+          this.router.navigate(['/navigation-employe']);
+        }
+        
         });
   }
 }
