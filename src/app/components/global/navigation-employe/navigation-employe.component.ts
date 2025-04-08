@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-employe',
@@ -8,5 +8,10 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './navigation-employe.component.css'
 })
 export class NavigationEmployeComponent {
+  idRestaurant: string;
 
+  constructor() {
+    const id = localStorage.getItem('id_restaurant');
+    this.idRestaurant = id ? id : '';
+  }
 }
