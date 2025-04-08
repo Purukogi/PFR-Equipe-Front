@@ -1,11 +1,11 @@
+import { Plat } from "./plat";
+
 export interface Commande {
     idCommande : number;
     statut : string;
     idReservation : number;
     assoCommandesPlatsDto: {
-        plat: {
-          nom: string;
-        };
-        quantite: number;
-      }[];
+      plat: Plat;
+      quantite: number;
+    }[];
 }

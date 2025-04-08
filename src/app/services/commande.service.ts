@@ -28,6 +28,13 @@ export class CommandeService {
   get_commande_by_table(idTable: number) {
     return this.client.get<Commande>(`${this.BASE_URL}/par-table/${idTable}`);
   }
-  
 
+  get_commande_by_id(idCommande: number,) {
+    return this.client.get<Commande>(`${this.BASE_URL}/${idCommande}`);
+  }
+  
+  update_statut_servie(id: number) {
+    return this.client.put<Commande>(`${this.BASE_URL}/${id}/servie`, {});
+  }
+  
 }

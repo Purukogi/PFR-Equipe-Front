@@ -62,30 +62,48 @@ export class FormulaireCreationComponent {
 
   validerCommande() {
     if (!this.idCommande) return;
-
+  
     const assoCommandesPlatsDto = Object.entries(this.quantites)
       .filter(([_, qty]) => qty > 0)
-      .map(([nom, qty]) => ({
-        plat: { nom },
-        quantite: qty
-      }));
-
-    const commande: Commande = {
-      idCommande: this.idCommande,
-      statut: 'En cuisine',
-      idReservation: 0,
-      assoCommandesPlatsDto
-    };
-
-    this.commandeService.ajouter_plats_commande(this.idCommande, commande).subscribe({
-      next: (res) => {
-        this.messageConfirmation = "La commande a été envoyée en cuisine !";
-        setTimeout(() => {
-          this.router.navigate(['/salle']);
-        }, 3000); 
-      },
-      error: (err) => console.error("Erreur mise à jour commande :", err)
-    });
+      .map(([nom, qty]) => {
+        // Trouver le plat dans platsParCategorie par le nom
+        let plat: Plat | undefined;
+        
+        // Recherche dans les catégories de plats
+        for (const plats of Object.values(this.platsParCategorie)) {
+          plat = plats.find(p => p.nom === nom);
+          if (plat) break;
+        }
+        // Si un plat est trouvé, alors l'ajouter à assoCommandesPlatsDto
+        if (plat) {
+          return { plat, quantite: qty };
+        } else {
+          console.error(`Plat non trouvé: ${nom}`);
+          return null; 
+        }
+      })
+      .filter(item => item !== null);
+  
+    if (assoCommandesPlatsDto.length > 0) {
+      const commande: Commande = {
+        idCommande: this.idCommande,
+        statut: 'En cuisine',
+        idReservation: 0,
+        assoCommandesPlatsDto
+      };
+  
+      this.commandeService.ajouter_plats_commande(this.idCommande, commande).subscribe({
+        next: (res) => {
+          this.messageConfirmation = "La commande a été envoyée en cuisine !";
+          setTimeout(() => {
+            this.router.navigate(['/salle']);
+          }, 3000); 
+        },
+        error: (err) => console.error("Erreur mise à jour commande :", err)
+      });
+    } else {
+      console.error('Aucun plat valide trouvé pour la commande.');
+    }
   }
 
   calculerTotal(): number {
@@ -97,7 +115,6 @@ export class FormulaireCreationComponent {
         total += plat.prix * quantite;
       }
     }
-  
     return total;
   }
 }

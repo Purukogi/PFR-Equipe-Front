@@ -14,7 +14,6 @@ import { CommandeService } from '../../../services/commande.service';
 })
 export class SalleComponent implements OnInit{
   tables: TableRestaurant[] = [];
-  //idRestaurant = 1; // pour test
   idRestaurant : number = 0;
   numeroTable: number = 0;
 
@@ -48,16 +47,13 @@ export class SalleComponent implements OnInit{
     this.commandeService.get_commande_by_table(idTable).subscribe({
       next: (commande) => {
         if (commande && commande.idCommande) {
-          // Une commande existe déjà → redirection vers les détails
           this.router.navigate(['/detail-commande-salle', commande.idCommande, numeroTable]);
         } else {
-          // Pas de commande → on en crée une
           this.add_commande(idTable, numeroTable);
         }
       },
       error: (err) => {
         if (err.status === 204) {
-          // Aucun contenu → aucune commande trouvée
           this.add_commande(idTable, numeroTable);
         } else {
           console.error("Erreur lors de la vérification de commande :", err);
