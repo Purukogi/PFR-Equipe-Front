@@ -1,6 +1,6 @@
 export interface Reservation {
-    numero_table?: number;
-    nom_client: string;
-    nb_personne: number;
-    date: Date;
+    numeroTable?: number;
+    nomClient: string;
+    nbPersonne: number;
+    horaireReservation: Date;
 }

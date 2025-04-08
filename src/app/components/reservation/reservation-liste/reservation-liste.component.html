@@ -1,3 +1,4 @@
-<div>
-    <app-reservation-item *ngFor="let reservation of reservation?.results"></app-reservation-item>
+<div class="vh-100 d-flex flex-column justify-content-center">
+    <div *ngIf="reservations.length === 0">Aucune réservation trouvée</div>
+    <app-reservation-item *ngFor="let reservation of reservations" [reservation]="reservation"></app-reservation-item>
 </div>
