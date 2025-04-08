@@ -7,10 +7,12 @@ import { RestaurantListeComponent } from './components/admin/restaurant-liste/re
 import { SalleComponent } from './components/commande/salle/salle.component';
 import { FormulaireCreationComponent } from './components/commande/formulaire-creation/formulaire-creation.component';
 import { DetailCommandeSalleComponent } from './components/commande/detail-commande-salle/detail-commande-salle.component';
+import { FormulaireCreationResaComponent } from './components/reservation/formulaire-creation-resa/formulaire-creation-resa.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
     {path : "navigation-employe", component : NavigationEmployeComponent},
+    {path : "reservations/creer-resa", component : FormulaireCreationResaComponent},
     {path : "reservations/:id", component : ReservationListeComponent},
     {path : "navigation-admin", component : NavigationAdminComponent},
     {path : "restaurant-liste", component : RestaurantListeComponent},

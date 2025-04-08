@@ -13,4 +13,9 @@ export class ReservationService {
   get_reservations(id_restaurant: string) {
     return this.client.get<Reservation[]>(this.BASE_URL + id_restaurant);
   }
+
+  // Ajout d'une nouvelle réservation
+  add_reservation(id_restaurant: string, reservation: Reservation) {
+    return this.client.post(this.BASE_URL + id_restaurant, reservation);
+  }
 }

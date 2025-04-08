@@ -8,5 +8,5 @@
     <app-reservation-item *ngFor="let reservation of reservationsFutures" [reservation]="reservation"></app-reservation-item>
   </div>
 <div class="d-flex justify-content-end ">
-    <i class="bi bi-plus-circle me-3"></i>
+    <button [routerLink]="['/reservations/creer-resa']"><i class="bi bi-plus-circle me-3"></i></button>
 </div>

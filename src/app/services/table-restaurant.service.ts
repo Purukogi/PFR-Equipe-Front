@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TableRestaurant } from '../interfaces/table-restaurant';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TableRestaurantService {
+
   private BASE_URL = "http://localhost:8080/tables";
 
   constructor(private client: HttpClient) { }
@@ -18,4 +20,9 @@ export class TableRestaurantService {
     return this.client.get<TableRestaurant[]>(`${this.BASE_URL}/occupees/${idRestaurant}`);
   }
 
+  getTablesLibres(idRestaurant: string, horaireReservation: string, nbPersonne: number): Observable<TableRestaurant[]> {
+    return this.client.get<TableRestaurant[]>(
+      `${this.BASE_URL}/libres/${idRestaurant}?heureResa=${encodeURIComponent(horaireReservation)}&nbPersonne=${nbPersonne}`
+    );
+  }
 }
