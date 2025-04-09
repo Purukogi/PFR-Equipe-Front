@@ -1,5 +1,3 @@
-<div>
-    <ul *ngFor="let restaurant of restaurants">
-        <li >{{ restaurant.nom }}</li>
-    </ul>
+<div class="container vh-100 d-flex flex-column justify-content-center gap-4">
+    <app-restaurant-item *ngFor="let restaurant of restaurants" [restaurant] = "restaurant"></app-restaurant-item>
 </div>
