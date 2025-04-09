@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Observer } from '../../../interfaces/observer';
-import { NavigationService } from '../../../services/navigation.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -9,19 +8,14 @@ import { NavigationService } from '../../../services/navigation.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit, Observer{
+export class HeaderComponent{
   
-  last_url : string = "login";
+  last_url : string = "/login";
 
-  constructor (private service : NavigationService) {}
+  constructor (private location : Location) {}
 
-  ngOnInit(): void {
-    this.service.subscribe(this);
+  goToLastUrl() : void {
+    this.location.back();
   }
 
-  notify(): void {
-    this.last_url = this.service.last_url;
-    console.log("the url has been updated to " + this.last_url);
-    
-  }
 }

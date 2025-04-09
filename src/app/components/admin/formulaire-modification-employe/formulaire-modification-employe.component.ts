@@ -42,7 +42,6 @@ export class FormulaireModificationEmployeComponent{
           console.log("employe modifié avec succès");
           this.router.navigate(['/employe-list', this.id_restaurant]);
         }
-        
       );
     }
 

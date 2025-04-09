@@ -14,7 +14,8 @@ export class FormulaireConnexionComponent {
   login : string = "";
   mdp : string = "";
 
-  constructor (private service : AuthenticationService, private router : Router) {}
+  constructor (private service : AuthenticationService,
+               private router : Router) {}
 
   connexion() {
     this.service.connexion(this.login, this.mdp)

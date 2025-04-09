@@ -5,7 +5,6 @@ import { EmployeService } from '../../../services/employe.service';
 import { EmployeItemComponent } from "./employe-item/employe-item.component";
 import { CommonModule } from '@angular/common';
 import { Observer } from '../../../interfaces/observer';
-import { NavigationService } from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-employe-liste',
@@ -20,8 +19,7 @@ export class EmployeListeComponent implements OnInit, Observer{
   
   constructor(private route : ActivatedRoute,
               private service : EmployeService,
-              private router : Router,
-              private navService : NavigationService) {}
+              private router : Router) {}
     
     ngOnInit(): void {    
 
@@ -37,12 +35,10 @@ export class EmployeListeComponent implements OnInit, Observer{
             response => this.employes = response
           );
         }
-        
       });
     }
 
     ajouterEmployer() {
-      this.navService.updateLastUrl("/employe-liste/" + this.id_restaurant?.toString());
       this.router.navigate(['/creation-employe', this.id_restaurant]);   
     }
 
