@@ -9,6 +9,7 @@ import { FormulaireCreationEmployeComponent } from './components/admin/formulair
 import { SalleComponent } from './components/commande/salle/salle.component';
 import { FormulaireCreationComponent } from './components/commande/formulaire-creation/formulaire-creation.component';
 import { DetailCommandeSalleComponent } from './components/commande/detail-commande-salle/detail-commande-salle.component';
+import { FormulaireAssignationComponent } from './components/reservation/formulaire-assignation/formulaire-assignation.component';
 import { FormulaireModificationEmployeComponent } from './components/admin/formulaire-modification-employe/formulaire-modification-employe.component';
 import { CuisineComponent } from './components/commande/cuisine/cuisine.component';
 import { CaisseComponent } from './components/commande/caisse/caisse.component';
@@ -18,6 +19,7 @@ import { authEmployeGuard } from './guards/auth-employe.guard';
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
     {path : "navigation-employe", component : NavigationEmployeComponent, canActivate : [authEmployeGuard]},
+    {path: 'reservations/attribuer-table/:id', component: FormulaireAssignationComponent, canActivate : [authEmployeGuard]},
     {path : "reservations/:id", component : ReservationListeComponent, canActivate : [authEmployeGuard]},
     {path : "navigation-admin", component : NavigationAdminComponent, canActivate : [authAdminGuard]},
     {path : "restaurant-liste", component : RestaurantListeComponent, canActivate : [authAdminGuard]},
