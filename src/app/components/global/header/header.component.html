@@ -1,7 +1,7 @@
 <nav class="navbar vert fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" [routerLink]="['/navigation-employe']"><i class="bi bi-house-door" style="font-size: 2rem; color: white;"></i></a>
-      <a class="navbar-text" href="#">
+      <a class="navbar-text" [routerLink]="['{{last_url}}']">
         <i class="bi bi-arrow-return-left" style="font-size: 2rem; color: white;"></i>
       </a>
     </div>
