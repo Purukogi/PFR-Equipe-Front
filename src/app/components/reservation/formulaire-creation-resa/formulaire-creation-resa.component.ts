@@ -20,6 +20,7 @@ export class FormulaireCreationResaComponent {
   nbPersonne: number = 1;
   tablesDisponibles: TableRestaurant[] = [];
   idRestaurant: string;
+  idReservation?: number;
 
   constructor(
     private reservationService: ReservationService,
@@ -58,6 +59,7 @@ export class FormulaireCreationResaComponent {
       const horaireReservation = new Date(`${this.date}T${this.heure}`);
 
       const reservation: Reservation = {
+        id: 1,
         nomClient: this.nomClient,
         numeroTable: table.numeroTable,
         horaireReservation: horaireReservation,

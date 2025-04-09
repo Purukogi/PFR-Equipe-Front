@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TableRestaurant } from '../interfaces/table-restaurant';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +17,5 @@ export class TableRestaurantService {
 
   get_tables_occupees(idRestaurant: number) {
     return this.client.get<TableRestaurant[]>(`${this.BASE_URL}/occupees/${idRestaurant}`);
-  }
-
-  getTablesLibres(idRestaurant: string, horaireReservation: string, nbPersonne: number): Observable<TableRestaurant[]> {
-    return this.client.get<TableRestaurant[]>(
-      `${this.BASE_URL}/libres/${idRestaurant}?heureResa=${encodeURIComponent(horaireReservation)}&nbPersonne=${nbPersonne}`
-    );
   }
 }

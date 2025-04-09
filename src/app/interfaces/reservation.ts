@@ -1,4 +1,5 @@
 export interface Reservation {
+    id: number;
     numeroTable?: number;
     nomClient: string;
     nbPersonne: number;
