@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Restaurant } from '../../../interfaces/restaurant';
 import { RestaurantService } from '../../../services/restaurant.service';
 import { CommonModule } from '@angular/common';
+import { RestaurantItemComponent } from "./restaurant-item/restaurant-item.component";
 
 @Component({
   selector: 'app-restaurant-liste',
-  imports: [CommonModule],
+  imports: [CommonModule, RestaurantItemComponent],
   templateUrl: './restaurant-liste.component.html',
   styleUrl: './restaurant-liste.component.css'
 })
