@@ -12,22 +12,18 @@
     </ng-template>
   </div>
 
-  
+<!-- Modal changement de statut -->
 <div class="modal fade" tabindex="-1" id="popupStatut" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Changer le statut</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <p>Voulez-vous passer la commande #{{ commandeSelectionnee }} à <strong>"Prête"</strong> ?</p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="modal-body  text-center">
+        <p class="mb-4">Voulez-vous passer la commande #{{ commandeSelectionnee }} à <strong>"Prête"</strong> ?</p>
+        <div class="d-flex justify-content-center gap-3">
           <button class="btn btn-vert" (click)="changerStatut()">Confirmer</button>
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>
     </div>
   </div>
+</div>
   

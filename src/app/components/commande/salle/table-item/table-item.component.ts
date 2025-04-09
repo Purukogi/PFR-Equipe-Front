@@ -11,7 +11,4 @@ export class TableItemComponent {
   @Input() numero!: number;
   @Input() estOccupee: boolean = false;
 
-  ngOnInit() {
-  console.log('Table affichée :', this.numero, ' - occupée :', this.estOccupee);
-}
 }

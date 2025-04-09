@@ -1,1 +1,76 @@
-<p>detail-commande-caisse works!</p>
+<div class="container min-vh-100 bg-white">
+    <div class="form-container bg-light p-4 rounded shadow mx-auto" style="max-width: 600px;">
+      <h3 class="mb-4">Détails de la commande #{{ idCommande }}</h3>
+  
+      <div *ngIf="commande">
+        <div class="mb-3">
+          <p><strong>Statut de la commande :</strong> {{ commande.statut }}</p>
+          <p><strong>Réservation ID :</strong> {{ commande.idReservation }}</p>
+        </div>
+
+        <div *ngIf="commande.assoCommandesPlatsDto.length > 0">
+          <h4 class="text-vert my-4">Articles commandés :</h4>
+          <div *ngFor="let item of commande.assoCommandesPlatsDto" class="mb-3">
+            <div class="row align-items-center">
+                <div class="col-7">
+                    <strong>{{ item.plat.nom }}</strong>
+                  </div>
+                  <div class="col-2 text-center">
+                    <span>{{ item.quantite }} x</span>
+                  </div>
+                  <div class="col-3 text-end">
+                    <small class="text-muted">{{ item.plat.prix | number: '1.2-2' }} €</small>
+                  </div>
+              </div>
+            </div>
+            <div class="mt-4">
+                <hr>
+                <div class="d-flex justify-content-between">
+                  <span><strong>Total :</strong></span>
+                  <span><strong>{{ getTotal() | number: '1.2-2' }} €</strong></span>
+                </div>
+              </div>
+
+        <div class="mt-4">
+            <button class="btn btn-outline-secondary w-100" (click)="imprimerNote()">Imprimer la note</button>
+        </div>     
+
+        <div class="mt-3">
+          <button class="btn btn-vert w-100" (click)="reglerCommande()">Régler la commande</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modal confirmation suppression -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="modal-body text-center">
+        <p class="mb-4">Êtes-vous sûr de vouloir supprimer cette commande ?</p>
+        <div class="d-flex justify-content-center gap-3">
+          <button type="button" class="btn btn-vert" (click)="confirmerSuppression()">Confirmer</button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Note client à imprimer -->
+<div id="ticket-impression" style="display: none;">
+  <div style="font-family: monospace; padding: 20px;">
+    <h4 style="text-align: center;">Ticket client</h4>
+    <p>Commande n°{{ commande.idCommande }}</p>
+    <p>Réservation ID : {{ commande.idReservation }}</p>
+    <hr>
+    <div *ngFor="let item of commande.assoCommandesPlatsDto">
+      <p>{{ item.plat.nom }} x{{ item.quantite }} — {{ item.plat.prix | number: '1.2-2' }} €</p>
+    </div>
+    <hr>
+    <p><strong>Total : {{ getTotal() | number: '1.2-2' }} €</strong></p>
+    <p style="text-align: center;">Merci pour votre visite !</p>
+  </div>
+</div>

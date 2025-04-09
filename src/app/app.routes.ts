@@ -9,6 +9,7 @@ import { FormulaireCreationComponent } from './components/commande/formulaire-cr
 import { DetailCommandeSalleComponent } from './components/commande/detail-commande-salle/detail-commande-salle.component';
 import { CuisineComponent } from './components/commande/cuisine/cuisine.component';
 import { CaisseComponent } from './components/commande/caisse/caisse.component';
+import { DetailCommandeCaisseComponent } from './components/commande/detail-commande-caisse/detail-commande-caisse.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path : "salle", component : SalleComponent},
     {path : "creation-commande/:idCommande/:numeroTable", component : FormulaireCreationComponent},
     {path : "detail-commande-salle/:idCommande/:numeroTable", component : DetailCommandeSalleComponent},
+    {path : "detail-commande-caisse/:idCommande/:numeroTable", component : DetailCommandeCaisseComponent},
     {path : "cuisine", component : CuisineComponent},
     {path : "caisse", component : CaisseComponent},
     {path : "**", redirectTo : "/login"}

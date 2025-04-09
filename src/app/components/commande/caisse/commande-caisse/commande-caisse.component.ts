@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Commande } from '../../../../interfaces/commande';
 
 @Component({
   selector: 'app-commande-caisse',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './commande-caisse.component.css'
 })
 export class CommandeCaisseComponent {
-
+  @Input() commande!: Commande;
 }
