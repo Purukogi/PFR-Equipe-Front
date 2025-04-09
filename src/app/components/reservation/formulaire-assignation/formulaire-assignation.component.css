@@ -1,0 +1,9 @@
+.tables {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.carre {
+    height: 50px;
+    width: 50px;
+}

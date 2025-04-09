@@ -6,6 +6,7 @@ import { TableRestaurant } from '../interfaces/table-restaurant';
   providedIn: 'root'
 })
 export class TableRestaurantService {
+
   private BASE_URL = "http://localhost:8080/tables";
 
   constructor(private client: HttpClient) { }
@@ -17,5 +18,4 @@ export class TableRestaurantService {
   get_tables_occupees(idRestaurant: number) {
     return this.client.get<TableRestaurant[]>(`${this.BASE_URL}/occupees/${idRestaurant}`);
   }
-
 }

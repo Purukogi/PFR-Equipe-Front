@@ -1,0 +1,42 @@
+<div class="container py-4">
+    <div class="mb-3">
+      <label for="nomClient" class="form-label fw-bold">Nom :</label>
+      <input type="text" id="nomClient" [(ngModel)]="nomClient" class="form-control border-dark rounded-0">
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label fw-bold">Date :</label>
+      <input type="date" id="date" [(ngModel)]="date" class="form-control border-dark rounded-0">
+    </div>
+
+    <div class="mb-3">
+      <label for="heure" class="form-label fw-bold">Heure :</label>
+      <input type="time" id="heure" [(ngModel)]="heure" class="form-control border-dark rounded-0">
+    </div>
+
+    <div class="mb-3">
+      <label for="nbPersonne" class="form-label fw-bold">Nombre de Personnes :</label>
+      <input type="number" id="nbPersonne" [(ngModel)]="nbPersonne" min="1" class="form-control border-dark rounded-0">
+    </div>
+
+    <div class="mt-4">
+      <button class="btn btn-primary" (click)="rechercherTablesDisponibles()" 
+              [disabled]="!nomClient || !date || !heure || !nbPersonne">
+        Rechercher tables disponibles
+      </button>
+    </div>
+
+    <!-- Tables disponibles -->
+    <div class="row mt-4 g-3" *ngIf="tablesDisponibles.length > 0">
+      <div class="col-6" *ngFor="let table of tablesDisponibles">
+        <div class="bg-success rounded d-flex" (click)="selectionnerTable(table)" style="cursor: pointer;">
+          <div class="bg-light p-3 d-flex align-items-center justify-content-center fw-bold fs-4" style="width: 60px;">
+            {{ table.numeroTable }}
+          </div>
+          <div class="text-white p-3">
+            {{ table.nbPlaces }} places
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
