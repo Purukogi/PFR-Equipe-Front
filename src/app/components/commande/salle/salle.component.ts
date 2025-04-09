@@ -65,7 +65,7 @@ export class SalleComponent implements OnInit{
   add_commande(idTable: number, numeroTable: number) {
     this.commandeService.add_commande(idTable).subscribe({
       next: (commande) => {
-        console.log("Commande créée :", commande);
+        localStorage.setItem(commande.idCommande.toString(), numeroTable.toString());
         this.router.navigate(['/creation-commande', commande.idCommande, numeroTable]);
       },
       error: (err) => {

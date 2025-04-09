@@ -8,4 +8,5 @@ export interface Commande {
       plat: Plat;
       quantite: number;
     }[];
+    numeroTable?: number;
 }

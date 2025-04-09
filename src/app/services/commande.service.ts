@@ -44,4 +44,16 @@ export class CommandeService {
   update_statut_prete(id: number) {
     return this.client.put<Commande>(`${this.BASE_URL}/${id}/prete`, {});
   }
+
+  get_commandes_servies() {
+    return this.client.get<Commande[]>(`${this.BASE_URL}/servie`);
+  }
+
+  update_statut_payee(id: number) {
+    return this.client.put<Commande>(`${this.BASE_URL}/${id}/payee`, {});
+  }
+
+  delete_commande(id: number) {
+    return this.client.delete(`${this.BASE_URL}/${id}/suppression`, { responseType: 'text' });
+  }
 }

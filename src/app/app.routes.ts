@@ -15,6 +15,7 @@ import { CuisineComponent } from './components/commande/cuisine/cuisine.componen
 import { CaisseComponent } from './components/commande/caisse/caisse.component';
 import { authAdminGuard } from './guards/auth-admin.guard';
 import { authEmployeGuard } from './guards/auth-employe.guard';
+import { DetailCommandeCaisseComponent } from './components/commande/detail-commande-caisse/detail-commande-caisse.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
@@ -29,6 +30,7 @@ export const routes: Routes = [
     {path : "salle", component : SalleComponent, canActivate : [authEmployeGuard]},
     {path : "creation-commande/:idCommande/:numeroTable", component : FormulaireCreationComponent, canActivate : [authEmployeGuard]},
     {path : "detail-commande-salle/:idCommande/:numeroTable", component : DetailCommandeSalleComponent, canActivate : [authEmployeGuard]},
+    {path : "detail-commande-caisse/:idCommande/:numeroTable", component : DetailCommandeCaisseComponent, canActivate : [authEmployeGuard]},
     {path : "cuisine", component : CuisineComponent, canActivate : [authEmployeGuard]},
     {path : "caisse", component : CaisseComponent, canActivate : [authEmployeGuard]},
     {path : "**", redirectTo : "/login"}

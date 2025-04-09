@@ -35,7 +35,6 @@ export class CuisineComponent {
 
   ouvrirPopup(idCommande: number) {
     this.commandeSelectionnee = idCommande;
-    console.log('Commande sélectionnée ID:', this.commandeSelectionnee);
 
     const modalEl = document.getElementById('popupStatut');
     if (modalEl) {
@@ -47,13 +46,11 @@ export class CuisineComponent {
   }
 
   changerStatut() {
-    console.log('Changer statut pour la commande ID:', this.commandeSelectionnee);
     if (!this.commandeSelectionnee) return;
 
     this.commandeService.update_statut_prete(this.commandeSelectionnee)
       .subscribe({
         next: (res) => {
-          console.log('Statut mis à jour', res);
           this.modalInstance.hide();
           this.getCommandesEnCuisine();
         },
@@ -62,5 +59,4 @@ export class CuisineComponent {
         }
       });
   }
-
 }
