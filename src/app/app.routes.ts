@@ -4,9 +4,13 @@ import { NavigationEmployeComponent } from './components/global/navigation-emplo
 import { ReservationListeComponent } from './components/reservation/reservation-liste/reservation-liste.component';
 import { NavigationAdminComponent } from './components/global/navigation-admin/navigation-admin.component';
 import { RestaurantListeComponent } from './components/admin/restaurant-liste/restaurant-liste.component';
+import { EmployeListeComponent } from './components/admin/employe-liste/employe-liste.component';
+import { FormulaireCreationEmployeComponent } from './components/admin/formulaire-creation-employe/formulaire-creation-employe.component';
 import { SalleComponent } from './components/commande/salle/salle.component';
 import { FormulaireCreationComponent } from './components/commande/formulaire-creation/formulaire-creation.component';
 import { DetailCommandeSalleComponent } from './components/commande/detail-commande-salle/detail-commande-salle.component';
+import { FormulaireAssignationComponent } from './components/reservation/formulaire-assignation/formulaire-assignation.component';
+import { FormulaireModificationEmployeComponent } from './components/admin/formulaire-modification-employe/formulaire-modification-employe.component';
 import { CuisineComponent } from './components/commande/cuisine/cuisine.component';
 import { CaisseComponent } from './components/commande/caisse/caisse.component';
 import { DetailCommandeCaisseComponent } from './components/commande/detail-commande-caisse/detail-commande-caisse.component';
@@ -14,9 +18,13 @@ import { DetailCommandeCaisseComponent } from './components/commande/detail-comm
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
     {path : "navigation-employe", component : NavigationEmployeComponent},
+    {path: 'reservations/attribuer-table/:id', component: FormulaireAssignationComponent},
     {path : "reservations/:id", component : ReservationListeComponent},
     {path : "navigation-admin", component : NavigationAdminComponent},
     {path : "restaurant-liste", component : RestaurantListeComponent},
+    {path : "employe-liste/:id", component : EmployeListeComponent},
+    {path : "creation-employe/:id", component : FormulaireCreationEmployeComponent},
+    {path : "modification-employe", component : FormulaireModificationEmployeComponent},
     {path : "salle", component : SalleComponent},
     {path : "creation-commande/:idCommande/:numeroTable", component : FormulaireCreationComponent},
     {path : "detail-commande-salle/:idCommande/:numeroTable", component : DetailCommandeSalleComponent},

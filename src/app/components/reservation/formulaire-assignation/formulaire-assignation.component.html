@@ -1,1 +1,61 @@
-<p>formulaire-assignation works!</p>
+<div class="container vh-100 d-flex flex-column justify-content-center">
+
+  
+  <div *ngIf="reservation" class="card p-4 mt-3">
+    <form (ngSubmit)="onSubmit()">
+      <!-- Récapitulatif des informations de la reservation en lecture seule -->
+      <div class="mb-3">
+        <label class="form-label">Nom du client</label>
+        <input type="text" class="form-control text-muted" [value]="reservation.nomClient" readonly disabled>
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Date</label>
+        <input type="text" class="form-control text-muted" [value]="reservation.horaireReservation | date:'dd/MM/yyyy'" readonly disabled>
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Heure</label>
+        <input type="text" class="form-control text-muted" [value]="reservation.horaireReservation | date:'HH:mm'" readonly disabled>
+      </div>   
+
+      <div class="mb-3">
+        <label class="form-label">Nombre de personnes</label>
+        <input type="number" class="form-control text-muted" [value]="reservation.nbPersonne" readonly disabled>
+      </div>
+
+      <!-- Tables disponibles selon les filtres -->
+      <div class="">
+        <h4 class="mb-3">Tables disponibles</h4>
+        <div class="tables row g-2" *ngIf="tablesDisponibles.length > 0">
+          <div class="col-6" *ngFor="let table of tablesDisponibles">
+            <div class="vert rounded p-1 d-flex" 
+                 [class.bg-primary]="numeroTable === table.numeroTable"
+                 (click)="selectionnerTable(table)">
+              <div class="carre bg-light rounded d-flex align-items-center justify-content-center">
+                {{ table.numeroTable }}
+              </div>
+              <div class="d-flex text-light align-items-center ps-3">
+                {{ table.nbPlaces }} places
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="tablesDisponibles.length === 0" class="alert alert-warning">
+          Aucune table disponible pour cette réservation.
+        </div>
+      </div>
+
+      <!-- Champ pour attribuer une table (maintenant caché car on utilise les tableaux cliquables) -->
+      <div class="mb-3" [hidden]="true">
+        <label class="form-label">Numéro de table *</label>
+        <input type="number" class="form-control" [(ngModel)]="numeroTable" name="numeroTable" required>
+      </div>
+      
+      <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Annuler</button>
+        <button type="submit" class="btn btn-vert" [disabled]="!numeroTable">Confirmer</button>
+      </div>
+    </form>
+  </div>
+</div>

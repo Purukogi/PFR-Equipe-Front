@@ -2,7 +2,6 @@ import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
     const jwt = localStorage.getItem("jwt");
-    console.log(req);
 
     if (req.method == "OPTIONS") {
         return next.call("handle", req);

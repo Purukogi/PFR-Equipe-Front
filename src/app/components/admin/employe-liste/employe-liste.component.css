@@ -1,0 +1,14 @@
+.ajout {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 70px;
+    right: 15px;
+    font-size: 4em;
+    color: white;
+}
+
+.ajout:hover {
+    cursor: pointer;
+}
