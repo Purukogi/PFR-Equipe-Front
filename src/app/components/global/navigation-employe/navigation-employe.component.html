@@ -1,13 +1,7 @@
-<div class="vh-100 d-flex flex-column justify-content-center gap-5">
-        <div class="row d-flex flex-row justify-content-around">
-                <button type="button" class="btn btn-success vert">Accueil Clientèle</button>
-                <button type="button" class="btn btn-success vert" [routerLink]="['/reservations', idRestaurant]">Réservations</button>
-        </div>
-        <div class="row d-flex flex-row justify-content-around">
-                <button type="button" class="btn btn-success vert" [routerLink]="['/salle']">Salle</button>
-                <button type="button" class="btn btn-success vert"[routerLink]="['/cuisine']">Cuisine</button>
-        </div>
-        <div class="row d-flex flex-row justify-content-around">
-                <button type="button" class="btn btn-success vert" [routerLink]="['/caisse']">Caisse</button>
-        </div>
+<div class="vh-100 d-flex flex-row justify-content-center align-content-center flex-wrap gap-4">        
+        <button type="button" class="btn btn-success vert">Accueil Clientèle</button>
+        <button type="button" class="btn btn-success vert" [routerLink]="['/reservations', idRestaurant]">Réservations</button>      
+        <button type="button" class="btn btn-success vert" [routerLink]="['/salle']">Salle</button>
+        <button type="button" class="btn btn-success vert"[routerLink]="['/cuisine']">Cuisine</button>
+        <button type="button" class="btn btn-success vert" [routerLink]="['/caisse']">Caisse</button>        
 </div>

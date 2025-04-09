@@ -1,5 +1,6 @@
 .reservations {
-    height: 85vh;
+    height: 80vh;
+    max-height: 80vh;
     overflow-y: auto;
 }
 
