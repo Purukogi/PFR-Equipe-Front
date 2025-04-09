@@ -1,8 +1,13 @@
-<nav class="navbar vert fixed-top">
+<nav class="navbar vert fixed-top" style="min-height: 100px;">
     <div class="container-fluid">
-      <a class="navbar-brand" [routerLink]="['/navigation-employe']"><i class="bi bi-house-door" style="font-size: 2rem; color: white;"></i></a>
-      <a class="navbar-text" href="#">
-        <i class="bi bi-arrow-return-left" style="font-size: 2rem; color: white;"></i>
-      </a>
+      <p class="navbar-brand" (click)="redirectionNavigation()" *ngIf="!isCurrentPageLogin() && !isCurrentPageNavigation()">
+        <i class="bi bi-house-door" style="font-size: 2rem; color: white;" ></i>
+      </p>
+      <p class="navbar-text" (click)="goToLastUrl()" *ngIf="!isCurrentPageLogin() && !isCurrentPageNavigation()">
+        <i class="bi bi-arrow-return-left" style="font-size: 2rem; color: white;" ></i>
+      </p>
+      <p class="navbar-text" (click)="logout()" *ngIf="isCurrentPageNavigation()">
+        <i class="bi bi-box-arrow-left" style="font-size: 2rem; color: white;"></i>
+      </p>
     </div>
 </nav>

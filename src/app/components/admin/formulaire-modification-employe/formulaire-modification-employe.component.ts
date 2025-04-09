@@ -40,7 +40,7 @@ export class FormulaireModificationEmployeComponent{
       this.service.updateEmploye(this.id_restaurant!, aModifier).subscribe(
         _ => {
           console.log("Employé modifié avec succès");
-          this.router.navigate(['/employe-list', this.id_restaurant]);
+          this.router.navigate(['/employe-liste', this.id_restaurant]);
         });
     }
 

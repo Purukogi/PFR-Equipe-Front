@@ -35,7 +35,6 @@ export class EmployeListeComponent implements OnInit, Observer{
             response => this.employes = response
           );
         }
-        
       });
     }
 
