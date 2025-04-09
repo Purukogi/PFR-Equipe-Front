@@ -13,11 +13,13 @@ import { FormulaireAssignationComponent } from './components/reservation/formula
 import { FormulaireModificationEmployeComponent } from './components/admin/formulaire-modification-employe/formulaire-modification-employe.component';
 import { CuisineComponent } from './components/commande/cuisine/cuisine.component';
 import { CaisseComponent } from './components/commande/caisse/caisse.component';
+import { AccueilClienteleComponent } from './components/reservation/accueil-clientele/accueil-clientele.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
     {path : "navigation-employe", component : NavigationEmployeComponent},
-    {path: 'reservations/attribuer-table/:id', component: FormulaireAssignationComponent},
+    {path : "accueil-clientele", component : AccueilClienteleComponent},
+    {path : "reservations/attribuer-table/:id", component: FormulaireAssignationComponent},
     {path : "reservations/:id", component : ReservationListeComponent},
     {path : "navigation-admin", component : NavigationAdminComponent},
     {path : "restaurant-liste", component : RestaurantListeComponent},

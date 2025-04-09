@@ -1,1 +1,45 @@
-<p>accueil-clientele works!</p>
+<div class="container vh-100 d-flex flex-column justify-content-between">
+    <div class="reservations mt-5 pt-5">
+        <app-accueil-clientele-item *ngFor="let table of tables" [table_restaurant]="table" [reservation]="getReservationForTable(table.numeroTable)" (click)="openTableModal(table)"></app-accueil-clientele-item>
+    </div>
+</div>
+
+<!-- Modal pour accueillir les clients -->
+<div class="modal fade" id="tableModal" tabindex="-1" aria-labelledby="tableModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tableModalLabel">
+            {{ selectedTable ? 'Table ' + selectedTable.numeroTable : 'Table' }}
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="selectedReservation">
+            <!-- Cas d'une table avec réservation -->
+            <p>Réservation pour {{ selectedReservation.nomClient }}</p>
+            <p>{{ selectedReservation.nbPersonne }} personnes à {{ selectedReservation.horaireReservation | date: 'HH:mm' }}</p>
+            <button class="btn btn-primary" (click)="acceptReservation()">
+              Accueillir le client
+            </button>
+          </div>
+          <div *ngIf="!selectedReservation && selectedTable">
+            <!-- Cas d'une table sans réservation -->
+            <form [formGroup]="newReservationForm">
+              <div class="mb-3">
+                <label for="clientName" class="form-label">Nom du client</label>
+                <input type="text" class="form-control" id="clientName" formControlName="nomClient">
+              </div>
+              <div class="mb-3">
+                <label for="personCount" class="form-label">Nombre de personnes</label>
+                <input type="number" class="form-control" id="personCount" formControlName="nbPersonne">
+              </div>
+              <button type="button" class="btn btn-primary" [disabled]="newReservationForm.invalid" (click)="createNewReservation()">
+                Placer le client
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
