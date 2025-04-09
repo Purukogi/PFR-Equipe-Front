@@ -35,8 +35,6 @@ export class EmployeItemComponent {
     }
 
     detailsEmploye() {
-      console.log(this.employe?.prenom);
-      
       this.detailsService.afficherDetails(this.id_restaurant!, this.employe!);    
     }
     
