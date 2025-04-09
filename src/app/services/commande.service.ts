@@ -37,4 +37,11 @@ export class CommandeService {
     return this.client.put<Commande>(`${this.BASE_URL}/${id}/servie`, {});
   }
   
+  get_commandes_en_cuisine() {
+    return this.client.get<Commande[]>(`${this.BASE_URL}/en-cuisine`);
+  }
+
+  update_statut_prete(id: number) {
+    return this.client.put<Commande>(`${this.BASE_URL}/${id}/prete`, {});
+  }
 }

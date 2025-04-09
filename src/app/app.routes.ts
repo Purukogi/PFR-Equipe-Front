@@ -10,6 +10,8 @@ import { SalleComponent } from './components/commande/salle/salle.component';
 import { FormulaireCreationComponent } from './components/commande/formulaire-creation/formulaire-creation.component';
 import { DetailCommandeSalleComponent } from './components/commande/detail-commande-salle/detail-commande-salle.component';
 import { FormulaireModificationEmployeComponent } from './components/admin/formulaire-modification-employe/formulaire-modification-employe.component';
+import { CuisineComponent } from './components/commande/cuisine/cuisine.component';
+import { CaisseComponent } from './components/commande/caisse/caisse.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
@@ -23,5 +25,7 @@ export const routes: Routes = [
     {path : "salle", component : SalleComponent},
     {path : "creation-commande/:idCommande/:numeroTable", component : FormulaireCreationComponent},
     {path : "detail-commande-salle/:idCommande/:numeroTable", component : DetailCommandeSalleComponent},
+    {path : "cuisine", component : CuisineComponent},
+    {path : "caisse", component : CaisseComponent},
     {path : "**", redirectTo : "/login"}
 ];

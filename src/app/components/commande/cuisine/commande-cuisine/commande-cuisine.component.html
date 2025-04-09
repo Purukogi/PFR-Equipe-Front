@@ -1,1 +1,10 @@
-<p>commande-cuisine works!</p>
+<div class="card bg-light px-4 py-2 mb-4 mx-auto w-100 w-md-75 w-lg-50 rounded-4" (click)="onClickCommande(commande.idCommande)">
+    <div class="card-body">
+      <h5 class="card-title fw-bold">Commande {{ commande.idCommande }} :</h5>
+      <ul class="mb-0 ps-3">
+        <li *ngFor="let item of commande.assoCommandesPlatsDto">
+          {{ item.plat.nom }} : {{ item.quantite }}
+        </li>
+      </ul>
+    </div>
+</div>
