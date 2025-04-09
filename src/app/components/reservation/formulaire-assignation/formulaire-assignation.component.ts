@@ -26,7 +26,10 @@ export class FormulaireAssignationComponent {
   ) {}
   
   ngOnInit() {
-    // Récupérer l'ID de la réservation depuis l'URL
+    /**
+     * Récupération de l'id de réservation dans l'URL
+     * Appel de la foction chargerTablesDisponibles
+     */
     const id = this.route.snapshot.paramMap.get('id');
     
     if (id) {

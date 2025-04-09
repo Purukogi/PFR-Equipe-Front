@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="reservations d-flex flex-column justify-content-center mt-5">
+<div class="container vh-100 d-flex flex-column justify-content-between">
+  <div class="reservations mt-5 pt-5">
       <h5 class="ms-1 mb-3">Réservations du jour</h5>
       <div *ngIf="reservationsDuJour.length === 0" class="ms-4">Aucune réservation pour aujourd'hui</div>
       <app-reservation-item *ngFor="let reservation of reservationsDuJour" [reservation]="reservation"></app-reservation-item>
@@ -9,6 +9,6 @@
       <app-reservation-item *ngFor="let reservation of reservationsFutures" [reservation]="reservation"></app-reservation-item>
     </div>
   <div class="d-flex justify-content-end ">
-      <i class="bi bi-plus-circle me-3 mb-5" [routerLink]="['/reservations/creer-resa']"></i>
+      <i class="bi bi-plus-circle me-3 mb-5 pb-3"></i>
   </div>
 </div>
