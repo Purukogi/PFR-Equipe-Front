@@ -26,6 +26,7 @@ export class EmployeItemComponent {
     supprimerEmploye() {
       this.service.deleteEmploye(this.id_restaurant!, this.employe?.id!).subscribe(
         _ => {
+          console.log("Employe supprimé avec succès");
           //On notifie à notre service qu'un changement a été effectué dans la BDD, afin que les observers soient notifiés à leur tour
           //cela leurs permet de mettre à jour leurs données sans avoir à refresh la page 
           this.service.notify();
@@ -34,8 +35,6 @@ export class EmployeItemComponent {
     }
 
     detailsEmploye() {
-      console.log(this.employe?.prenom);
-      
       this.detailsService.afficherDetails(this.id_restaurant!, this.employe!);    
     }
     

@@ -1,25 +1,25 @@
 <div class="container min-vh-100 bg-white">
     <div class="form-container bg-light p-4 rounded shadow mx-auto" style="max-width: 400px;">
-        <h2 class="mb-4">Commande : Table n°{{ numeroTable }}</h2>
+        <h2 class="mb-4 text-center">Table n°{{ numeroTable }}</h2>
     
         <div *ngIf="idCommande" class="mb-3">
-        <p><strong>ID commande :</strong> {{ idCommande }}</p>
+        <p><strong>Commande n° :</strong> {{ idCommande }}</p>
         </div>
         <form (ngSubmit)="validerCommande()">
-            <div *ngFor="let categorie of platsParCategorie | keyvalue" class="mb-4">
-              <h4 class="text-vert">{{ categorie.key }}</h4>
+            <div *ngFor="let categorie of platsParCategorie | keyvalue" class="mb-3">
+              <h5 class="vert text-white p-2 rounded mb-3" style="margin-left: -1rem; margin-right: -1rem;">{{ categorie.key }}</h5>
 
-                <div *ngFor="let plat of categorie.value" class="mb-3">
+                <div *ngFor="let plat of categorie.value" class="mb-2">
                     <div class="row align-items-center">
                         <div class="col-8">
                             <strong>{{ plat.nom }}</strong>
                             <div><small class="text-muted">{{ plat.prix | number: '1.2-2' }} €</small></div>
                         </div>
                         <div class="col-4 mt-2 mt-sm-0 text-sm-end">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-outline-danger btn-sm" (click)="changerQuantite(plat.nom, -1)">-</button>
+                            <div class="btn-group d-flex align-items-center" role="group">
+                                <button type="button" class="btn btn-icon" (click)="changerQuantite(plat.nom, -1)">-</button>
                                 <span class="btn btn-light btn-sm disabled">{{ quantites[plat.nom] || 0 }}</span>
-                                <button type="button" class="btn btn-outline-success btn-sm" (click)="changerQuantite(plat.nom, 1)">+</button>
+                                <button type="button" class="btn btn-icon" (click)="changerQuantite(plat.nom, 1)">+</button>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Employe } from '../../../interfaces/employe';
 import { EmployeDetailsService } from '../../../services/employe-details.service';
 import { EmployeService } from '../../../services/employe.service';
@@ -39,11 +39,9 @@ export class FormulaireModificationEmployeComponent{
       aModifier.id = this.employe?.id!;
       this.service.updateEmploye(this.id_restaurant!, aModifier).subscribe(
         _ => {
-          console.log("employe modifié avec succès");
+          console.log("Employé modifié avec succès");
           this.router.navigate(['/employe-list', this.id_restaurant]);
-        }
-        
-      );
+        });
     }
 
     afficher_erreur(field : string, error : string) {
