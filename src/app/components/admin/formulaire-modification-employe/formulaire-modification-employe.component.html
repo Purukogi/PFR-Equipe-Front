@@ -1,11 +1,11 @@
 <div class="container vh-100 d-flex flex-column justify-content-center">
     <div class="card">
-        <h2 class="text-center mt-3">Ajouter un employé</h2>
-        <form [formGroup]="formulaire_creation" (submit)="ajouterEmploye()" class="p-3">
+        <h2 class="text-center mt-3">Modifier un employé</h2>
+        <form [formGroup]="formulaire_modification" (submit)="modifierEmploye()" class="p-3">
             <div class="row">
                 <div class="mb-3 col-6">
                     <label for="prenom" class="form-label">Prenom</label>
-                    <input type="text" class="form-control" name="prenom" id="prenom"  formControlName="prenom" [ngClass]="{'input_incorrect' : afficher_erreur('prenom', 'required')}">
+                    <input type="text" class="form-control" name="prenom" id="prenom" formControlName="prenom" [ngClass]="{'input_incorrect' : afficher_erreur('prenom', 'required')}">
                     <span *ngIf="afficher_erreur('prenom', 'required')">Champ requis</span>
                   </div>
                   <div class="mb-3 col-6">
@@ -27,7 +27,7 @@
                 <label for="telephone" class="form-label">Téléphone</label>
                 <input type="tel" class="form-control" name="telephone" id="telephone" formControlName="telephone">
             </div>
-            <button type="submit" class="btn btn-success vert w-100 mt-3" [disabled]="!formulaire_creation.valid">Ajouter</button>  
+            <button type="submit" class="btn btn-success vert w-100 mt-3" [disabled]="!formulaire_modification.valid">Enregistrer les modifications</button>  
         </form>
     </div>
 </div>
