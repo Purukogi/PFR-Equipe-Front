@@ -170,11 +170,22 @@ export class AccueilClienteleComponent implements OnInit {
   creerNouvelleReservation(): void {
     if (this.tableSelectionnee && this.formulaireReservation.valid) {
       const valeursFormulaire = this.formulaireReservation.value;
-      
+
+      const reservation = {
+        idTable: this.tableSelectionnee.id,  
+        numeroTable: this.tableSelectionnee.numeroTable,  
+        statut: 'Présent', 
+        idRestaurant: this.idRestaurant, 
+        horaireReservation: new Date().toISOString(), 
+        nbPersonne: valeursFormulaire.nbPersonne, 
+        nomClient: valeursFormulaire.nomClient 
+      };
+
       this.serviceReservation.accepter_sans_resa(
-        this.tableSelectionnee.id,
-        valeursFormulaire.nbPersonne,
-        this.idRestaurant
+        reservation.idTable,
+        reservation.nbPersonne, 
+        reservation.idRestaurant,
+        reservation.numeroTable
       ).subscribe({
         next: (response) => {
           console.log('Nouvelle réservation créée:', response);
