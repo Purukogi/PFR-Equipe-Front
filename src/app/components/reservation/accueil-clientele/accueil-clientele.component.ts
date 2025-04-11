@@ -20,7 +20,6 @@ import * as bootstrap from 'bootstrap';
 export class AccueilClienteleComponent implements OnInit {
 
   tables: TableRestaurant[] = [];
-  tablesFiltrees: TableRestaurant[] = [];
   reservations: Reservation[] = [];
   idRestaurant: string = '';
 
@@ -52,10 +51,46 @@ export class AccueilClienteleComponent implements OnInit {
       const idRestaurantNum = parseInt(this.idRestaurant);
       
       if (!isNaN(idRestaurantNum)) {
-        // Charger les réservations d'abord
-        this.chargerReservations(idRestaurantNum);
+        this.chargerDonnees();
       }
     }
+  }
+
+  chargerDonnees(): void {
+    const idRestaurantNum = parseInt(this.idRestaurant);
+    
+    // Charger d'abord les réservations
+    this.serviceReservation.get_reservations(this.idRestaurant).subscribe({
+      next: (response) => {
+        this.reservations = response.filter(res => {
+          const dateRes = new Date(res.horaireReservation);
+          return isToday(dateRes);
+        });
+        console.log('Réservations du jour récupérées:', this.reservations);
+        
+        // Puis charger les tables
+        this.serviceTable.get_tables(idRestaurantNum).subscribe({
+          next: (tablesResponse) => {
+            // Sauvegarder toutes les tables
+            const toutesLesTables = tablesResponse;
+            
+            // Filtrer les tables qui n'ont pas de réservation avec statut "Présent"
+            this.tables = toutesLesTables.filter(table => {
+              const reservation = this.obtenirReservationPourTable(table.numeroTable);
+              return !reservation || reservation.statut !== "Présent";
+            });
+            
+            console.log('Tables filtrées:', this.tables);
+          },
+          error: (erreur) => {
+            console.error('Erreur lors du chargement des tables:', erreur);
+          }
+        });
+      },
+      error: (erreur) => {
+        console.error('Erreur lors du chargement des réservations:', erreur);
+      }
+    });
   }
 
   initialiserModal(): void {
@@ -68,48 +103,9 @@ export class AccueilClienteleComponent implements OnInit {
       }
     }, 100);
   }
-  
-  chargerReservations(idRestaurant: number): void {
-    this.serviceReservation.get_reservations(this.idRestaurant).subscribe({
-      next: (response) => {
-        this.reservations = response.filter(res => {
-          const dateRes = new Date(res.horaireReservation);
-          return isToday(dateRes);
-        });
-        console.log('Réservations du jour récupérées:', this.reservations);
-        
-        // Puis charger les tables
-        this.chargerTables(idRestaurant);
-      },
-      error: (erreur) => {
-        console.error('Erreur lors du chargement des réservations:', erreur);
-      }
-    });
-  }
-
-  chargerTables(idRestaurant: number): void {
-    this.serviceTable.get_tables(idRestaurant).subscribe({
-      next: (response) => {
-        this.tables = response;
-        this.filtrerTables();
-      },
-      error: (erreur) => {
-        console.error('Erreur lors du chargement des tables:', erreur);
-      }
-    });
-  }
-  
-  filtrerTables(): void {
-    // Filtrer les tables qui n'ont pas de réservation avec statut "Présent"
-    this.tablesFiltrees = this.tables.filter(table => {
-      const reservation = this.obtenirReservationPourTable(table.numeroTable);
-      return !reservation || reservation.statut !== "Présent";
-    });
-    console.log('Tables filtrées:', this.tablesFiltrees);
-  }
 
   obtenirReservationPourTable(numeroTable: number): Reservation | undefined {
-    return this.reservations.find(r => r.numeroTable === numeroTable);
+    return this.reservations.find(r => r.numeroTable === numeroTable && r.statut !== "Présent");
   }
 
   // Méthode pour ouvrir la modale de table
@@ -140,7 +136,7 @@ export class AccueilClienteleComponent implements OnInit {
   accepterReservation(): void {
     if (this.reservationSelectionnee && this.tableSelectionnee) {
       // Mettre à jour le statut de la réservation à "Présent"
-      const reservationMiseAJour = {
+      const reservationMiseAJour: Reservation = {
         ...this.reservationSelectionnee,
         statut: 'Présent'
       };
@@ -151,12 +147,16 @@ export class AccueilClienteleComponent implements OnInit {
       ).subscribe({
         next: (response) => {
           console.log('Réservation mise à jour:', response);
+          
           // Mettre à jour la liste des réservations
           const index = this.reservations.findIndex(r => r.id === this.reservationSelectionnee!.id);
           if (index !== -1) {
-            this.reservations[index] = reservationMiseAJour;
+            this.reservations[index] = response;
           }
-          this.filtrerTables(); // Mettre à jour les tables filtrées
+          
+          // Supprimer la table de la liste d'affichage car elle est maintenant occupée
+          this.tables = this.tables.filter(t => t.numeroTable !== this.tableSelectionnee!.numeroTable);
+          
           this.tableModal.hide();
         },
         error: (erreur) => {
@@ -178,9 +178,13 @@ export class AccueilClienteleComponent implements OnInit {
       ).subscribe({
         next: (response) => {
           console.log('Nouvelle réservation créée:', response);
+          
           // Ajouter la nouvelle réservation à la liste
           this.reservations.push(response);
-          this.filtrerTables(); // Mettre à jour les tables filtrées
+          
+          // Supprimer la table de la liste d'affichage car elle est maintenant occupée
+          this.tables = this.tables.filter(t => t.numeroTable !== this.tableSelectionnee!.numeroTable);
+          
           this.tableModal.hide();
         },
         error: (erreur) => {
