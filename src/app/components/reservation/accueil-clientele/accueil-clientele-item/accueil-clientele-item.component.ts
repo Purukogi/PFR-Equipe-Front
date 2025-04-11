@@ -18,5 +18,4 @@ export class AccueilClienteleItemComponent {
 
   constructor(private router: Router) {}
 
-  
 }

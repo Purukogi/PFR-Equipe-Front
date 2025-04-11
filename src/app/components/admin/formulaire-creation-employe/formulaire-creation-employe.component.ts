@@ -46,7 +46,7 @@ export class FormulaireCreationEmployeComponent implements OnInit {
       
       this.service.addEmploye(this.id_restaurant, aAjouter).subscribe(
         _ => {
-          console.log("amployé ajouté avec succes");
+          console.log("Employé ajouté avec succes");
           this.router.navigate(['/employe-liste', this.id_restaurant]);
         }
       );
