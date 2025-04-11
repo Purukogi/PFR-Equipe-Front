@@ -1,1 +1,45 @@
-<p>accueil-clientele works!</p>
+<div class="container vh-100 d-flex flex-column justify-content-between">
+  <div class="reservations mt-5 pt-5">
+      <app-accueil-clientele-item 
+          *ngFor="let table of tables" 
+          [table_restaurant]="table" 
+          [reservation]="obtenirReservationPourTable(table.numeroTable)" 
+          (click)="ouvrirModalTable(table)">
+      </app-accueil-clientele-item>
+  </div>
+</div>
+
+<!-- Modal pour accueillir les clients -->
+<div class="modal fade" tabindex="-1" id="tableModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="modal-body text-center">
+        <div *ngIf="reservationSelectionnee">
+          <!-- Cas d'une table avec réservation -->
+          <p class="mb-4">Voulez-vous accueillir la réservation <strong>{{ reservationSelectionnee.nomClient }}</strong> pour la table #{{ tableSelectionnee?.numeroTable }} ?</p>
+          <p>{{ reservationSelectionnee.nbPersonne }} personnes à {{ reservationSelectionnee.horaireReservation | date: 'HH:mm' }}</p>
+          <div class="d-flex justify-content-center gap-3 mt-4">
+            <button class="btn btn-vert" (click)="accepterReservation()">Confirmer</button>
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+        <div *ngIf="!reservationSelectionnee && tableSelectionnee">
+          <!-- Cas d'une table sans réservation -->
+          <p class="mb-4">Installer un client à la table <strong>#{{ tableSelectionnee.numeroTable }}</strong> ?</p>
+          <form [formGroup]="formulaireReservation" class="mb-3">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Nom du client" formControlName="nomClient">
+            </div>
+            <div class="mb-3">
+              <input type="number" class="form-control" placeholder="Nombre de personnes" formControlName="nbPersonne">
+            </div>
+          </form>
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-vert" [disabled]="formulaireReservation.invalid" (click)="creerNouvelleReservation()">Confirmer</button>
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

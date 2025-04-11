@@ -16,10 +16,12 @@ import { CaisseComponent } from './components/commande/caisse/caisse.component';
 import { authAdminGuard } from './guards/auth-admin.guard';
 import { authEmployeGuard } from './guards/auth-employe.guard';
 import { DetailCommandeCaisseComponent } from './components/commande/detail-commande-caisse/detail-commande-caisse.component';
+import { AccueilClienteleComponent } from './components/reservation/accueil-clientele/accueil-clientele.component';
 
 export const routes: Routes = [
     {path : "login", component : FormulaireConnexionComponent},
     {path : "navigation-employe", component : NavigationEmployeComponent, canActivate : [authEmployeGuard]},
+    {path : "accueil-clientele", component : AccueilClienteleComponent, canActivate : [authEmployeGuard]},
     {path: 'reservations/attribuer-table/:id', component: FormulaireAssignationComponent, canActivate : [authEmployeGuard]},
     {path : "reservations/:id", component : ReservationListeComponent, canActivate : [authEmployeGuard]},
     {path : "navigation-admin", component : NavigationAdminComponent, canActivate : [authAdminGuard]},

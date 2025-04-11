@@ -1,1 +1,7 @@
-<p>accueil-clientele-item works!</p>
+<div class = "vert rounded p-2 m-1 d-flex">
+    <div class="carre bg-light rounded d-flex align-items-center justify-content-center">{{ table_restaurant?.numeroTable }}</div>
+    <div class="d-flex flex-column ps-4 justify-content-center text-light">
+        <p class="mb-1">{{ reservation ? 'RESERVEE' : 'LIBRE' }} - {{ table_restaurant?.nbPlaces }} places</p>
+        <p class="mb-0" *ngIf="reservation">{{ reservation.nomClient }} - {{ reservation.horaireReservation | date : 'HH:mm' }} - {{ reservation.nbPersonne }}</p>
+    </div>
+</div>
